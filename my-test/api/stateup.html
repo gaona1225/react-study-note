@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        .hello {
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class BoilingVerdict extends React.Component {
+          constructor(props) {
+              super(props);
+          }
+
+          render() {
+              return (
+                  <p>{this.props.celsius > 100 ? '水会烧开' : '水不会烧开'}</p>
+              )
+          }
+      }
+
+      class TemperatureInput extends React.Component {
+          constructor(props) {
+              super(props);
+              this.state = {temperature: ''};
+              this.handleChange = this.handleChange.bind(this);
+          }
+
+          handleChange(event) {
+              this.setState({temperature: event.target.value})
+              event.preventDefault();
+          }
+
+          render() {
+              const temperature = this.state.temperature;
+              const scale = this.props.scale;
+              return (
+                  <fieldset>
+                      <legend>输入一个{scaleNames[scale]}温度:</legend>
+                      <input value = {temperature} onChange = {this.handleChange} />
+                      <BoilingVerdict celsius = {parseFloat(temperature)}/>
+                  </fieldset>
+              )
+          }
+      }
+
+      class Calculator extends React.Component {
+          render() {
+              return (
+                  <div>
+                      <TemperatureInput scale = 'c' />
+                      <TemperatureInput scale = 'f' />
+                  </div>
+              )
+          }
+      }
+
+      const scaleNames = {
+          c: 'Celsius',
+          f: 'Fahrenheit'
+      }
+
+      ReactDOM.render(
+        <div>
+            <Calculator />
+        </div>,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

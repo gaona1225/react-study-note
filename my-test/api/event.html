@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        .hello {
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+      class Toggle extends React.Component {
+          constructor(props){
+              super(props);
+              console.log('aaa');
+              this.state = {openSwitch: 'ON'};
+              this.handleBtnClick = this.handleBtnClick.bind(this);
+          }
+
+          handleBtnClick() {
+              this.state.openSwitch === 'ON' ? this.setState({openSwitch: 'OFF'}) : this.setState({openSwitch: 'ON'});
+          }
+
+          render() {
+              return (
+                  <button onClick = {this.handleBtnClick}>{this.state.openSwitch}</button>
+              )
+          }
+      }
+
+      class LinkCom extends React.Component {
+          handleClick(e) {
+              console.log('click');
+              e.preventDefault();
+          }
+
+          render() {
+              return (
+                <a href = "https://www.baidu.com" onClick = {this.handleClick}>链接</a>
+              )
+          }
+      }
+
+      class Greeting extends React.Component {
+          
+          render() {
+              console.log(this.props.isLoggedIn);
+              if (this.props.isLoggedIn) {
+                  return <p>Welcome back.</p>
+              } else {
+                  return <p>Please Sign up.</p>
+              }
+          }
+      }
+
+      ReactDOM.render(
+        <div>
+          <LinkCom />
+          <Toggle />
+          <Greeting isLoggedIn = {true}/>
+        </div>,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

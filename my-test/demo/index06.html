@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        .h1-react {
+            margin: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var MyTitle = React.createClass({
+            getDefaultProps: function () {
+                return {
+                    title : 'Hello world'
+                };
+            },
+            propTypes: {
+                title: React.PropTypes.string.isRequired,
+            },
+
+            render: function () {
+                return <h1 className='h1-react'>{this.props.title}</h1>
+            }
+        });
+        var data = '123';
+        ReactDOM.render(
+            <div>
+                <MyTitle title={data} />
+                <MyTitle />
+            </div>,
+            document.getElementById('example')
+        );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        .hello {
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var tick = () => {
+          const element = (
+            <h1 className = 'hello'>
+              new Dom
+              <p>It is {new Date().toLocaleTimeString()}</p>
+            </h1>
+          )
+
+          ReactDOM.render(
+            element,
+            document.getElementById('example')
+          )
+        }
+
+        setInterval(tick, 1000);
+
+        var formatName = (user) => {
+            return user.firstName + ' ' + user.lastName;
+        };
+
+        const user = {
+            firstName: 'Zhang',
+            lastName: 'San'
+        };
+
+        const element = (
+            <h1 className = 'hello'>
+                Hello, {formatName(user)}!
+            </h1>
+
+        );
+
+        ReactDOM.render(
+          <div>
+            <h3>Hello World!</h3>
+            {element}
+          </div>,
+          document.getElementById('example')
+        );
+    </script>
+  </body>
+</html>

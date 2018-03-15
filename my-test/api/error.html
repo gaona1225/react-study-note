@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class ErrorBoundary extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {hasError: false};
+            }
+
+            componentDidCatch(error, info) {
+                this.setState({hasError: true});
+                logErrorToMyService(error, info);
+            }
+
+            render() {
+                if (this.state.hasError) {
+                    return <h1>Something went wrong.</h1>
+                }
+                return this.props.children;
+            }
+        }
+
+        ReactDOM.render(
+          <div>
+              <ErrorBoundary>
+                  <MyWidget />
+              </ErrorBoundary>
+          </div>,
+          document.getElementById('example')
+        );
+    </script>
+  </body>
+</html>

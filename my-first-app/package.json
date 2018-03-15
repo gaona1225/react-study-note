@@ -1,0 +1,23 @@
+{
+  "name": "nodeserver",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "debuglog": "1.0.1",
+    "lodash": "^4.17.4",
+    "md5": "^2.2.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "redux-thunk": "^2.2.0",
+    "yog-passport": "http://gitlab.baidu.com/fex/yog-passport/repository/archive.tar.gz?ref=0.1.2",
+    "yog-ral": "^0.19.2",
+    "yog-uuap": "0.0.7",
+    "yog2-kernel": "1.8.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

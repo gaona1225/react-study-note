@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script src="build/remarkable.js"></script>
+    <style type="text/css">
+        
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+        const CreateDom = () => {
+            return React.createElement(
+                div,
+                {color: 'blue', shadowSize: 2},
+                'Click Me'
+            )
+        }
+
+        const Hello = () => {
+            return <p>hhh</p>
+        }
+
+        ReactDOM.render(
+          <div>
+            <Hello />
+            <CreateDom />
+          </div>,
+          document.getElementById('example')
+        )
+    </script>
+  </body>
+</html>

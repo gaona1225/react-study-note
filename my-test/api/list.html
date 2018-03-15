@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        .hello {
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class Blog extends React.Component {
+          render() {
+              const sidebar = (
+                  <ul>
+                    {this.props.posts.map((post) => 
+                        <li key = {post.id}>{post.title}</li>
+                    )}
+                  </ul>
+              );
+
+              const content = this.props.posts.map((post) => 
+                  <div key = {post.id}>
+                      <h3>{post.title}</h3>
+                      <p>{post.content}</p>
+                  </div>
+              );
+
+              return (
+                  <div>
+                    {sidebar}
+                    <hr/>
+                    {content}
+                  </div>
+              )
+          }
+      }
+
+      const numbers = [1, 2, 3, 4, 5];
+      const listItem = numbers.map((number, index) => 
+          <li key = {index}>{number}</li>
+      );
+      const posts = [
+          {id: 1, title: 'Hello world', content: 'Welcome to learning React!'},
+          {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+      ]
+
+      ReactDOM.render(
+        <div>
+          <ul>{listItem}</ul>
+          <Blog posts = {posts} />
+        </div>,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

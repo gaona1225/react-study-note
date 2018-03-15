@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        .hello {
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class NameForm extends React.Component {
+          constructor(props) {
+              super(props);
+              this.state = {value: ''};
+              this.handleChange = this.handleChange.bind(this);
+              this.handleSubmit = this.handleSubmit.bind(this);
+          }
+
+          handleChange(event) {
+              // console.log(event.target.value);
+              // this.setState({value: event.target.value}) ;
+              this.setState({value: event.target.value.toUpperCase()}) ;
+              event.preventDefault();
+          }
+
+          handleSubmit(event) {
+              console.log('submit --- name is ' + this.state.value);
+              event.preventDefault();
+          }
+
+          render() {
+              return (
+                  <form onSubmit = {this.handleSubmit}>
+                      <label>
+                          Name: <input type = 'text' value = {this.state.value} name = 'name' onChange = {this.handleChange} />
+                      </label>
+                      <input type = 'submit' value = 'Submit' />
+                      <p>{this.state.value}</p>
+                  </form>
+              )
+          }
+      }
+
+      class EssayForm extends React.Component {
+          constructor(props) {
+              super(props);
+              this.state = {value: ''};
+              this.handleChange = this.handleChange.bind(this);
+              this.handleSubmit = this.handleSubmit.bind(this);
+          }
+
+          handleChange(event) {
+              this.setState({value: event.target.value.toUpperCase()}) ;
+              event.preventDefault();
+          }
+
+          handleSubmit(event) {
+              console.log('submit --- name is ' + this.state.value);
+              event.preventDefault();
+          }
+
+          render() {
+              return (
+                  <form onSubmit = {this.handleSubmit}>
+                      <label>
+                          Name: 
+                          <textarea value = {this.state.value} onChange = {this.handleChange} />
+                      </label>
+                      <input type = 'submit' value = 'textArea Submit' />
+                      <p>{this.state.value}</p>
+                  </form>
+              )
+          }
+      }
+
+      class FlavorForm extends React.Component {
+          constructor(props) {
+              super(props);
+              this.state = {value: 'coconut'};
+              this.handleChange = this.handleChange.bind(this);
+              this.handleSubmit = this.handleSubmit.bind(this);
+          }
+
+          handleChange(event) {
+              this.setState({value: event.target.value});
+              event.preventDefault();
+          }
+
+          handleSubmit(event) {
+              console.log('select submit --- name is ' + this.state.value);
+              event.preventDefault();
+          }
+
+          render() {
+              return (
+                  <form onSubmit = {this.handleSubmit}>
+                      <label>
+                          Pick your favorite La Croix flavor;<br/>
+                          <select value = {this.state.value} onChange = {this.handleChange}>
+                              <option value = 'grapefruit'>Grapefruit</option>
+                              <option value = 'lime'>Lime</option>
+                              <option value = 'coconut'>Coconut</option>
+                              <option value = 'mango'>Mango</option>
+                          </select>
+                      </label><br/>
+                      <input type = 'submit' value = 'select submit' />
+                  </form>
+              )
+          }
+      }
+
+      class Reservation extends React.Component {
+          constructor(props) {
+              super(props);
+              this.state = {
+                  userName: '',
+                  userSex: 'girl'
+              };
+              this.handleUserNameChange = this.handleUserNameChange.bind(this);
+              this.handleUserSexChange = this.handleUserSexChange.bind(this);
+              this.handleSubmit = this.handleSubmit.bind(this);
+          }
+
+          handleUserNameChange(event) {
+              this.setState({userName: event.target.value});
+              event.preventDefault();
+          }
+
+          handleUserSexChange(event) {
+              this.setState({userSex: event.target.value});
+              event.preventDefault();
+          }
+
+          handleSubmit(event) {
+              console.log('Name value is ' + this.state.userName);
+              console.log('Sex value is ' + this.state.userSex);
+              event.preventDefault();
+          }
+
+          render() {
+              return (
+                  <form onSubmit = {this.handleSubmit}>
+                      <label>
+                          Name: <input type = 'text' value = {this.state.userName} name = 'userName' onChange = {this.handleUserNameChange} />
+                      </label><br/>
+                      <label>
+                          Pick your sex;<br/>
+                          <select value = {this.state.userSex} name = 'userSex' onChange = {this.handleUserSexChange}>
+                              <option value = 'boy'>Boy</option>
+                              <option value = 'girl'>Girl</option>
+                          </select>
+                      </label><br/>
+                      <input type = 'submit' value = 'Reservation submit' />
+                  </form>
+              )
+          }
+      }
+
+      ReactDOM.render(
+        <div>
+            <NameForm />
+            <br/>
+            <EssayForm />
+            <br/>
+            <FlavorForm />
+            <br/>
+            <br/>
+            <Reservation />
+        </div>,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

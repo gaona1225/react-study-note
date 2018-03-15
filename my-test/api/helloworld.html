@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style type="text/css">
+        .hello {
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var tick = () => {
+          console.log('tick');
+          const element = (
+            <h1 className = 'hello'>
+              new Dom
+              <p>It is {new Date().toLocaleTimeString()}</p>
+            </h1>
+          )
+
+          ReactDOM.render(
+            element,
+            document.getElementById('example')
+          )
+        }
+
+        var formatName = (user) => {
+            return user.firstName + ' ' + user.lastName;
+        };
+
+        const user = {
+            firstName: 'Zhang',
+            lastName: 'San'
+        };
+
+        const element = (
+            <h1 className = 'hello'>
+                Hello, {formatName(user)}!
+                <p><input type = 'button' value = 'button' onClick = {tick} /></p>
+            </h1>
+
+        );
+
+        /*const element = React.createElement(
+            'h1',
+            {className: 'hello'},
+            'Hello, world!'
+        )*/
+
+        ReactDOM.render(
+          <div>
+            <h3>Hello World!</h3>
+            {element}
+          </div>,
+          document.getElementById('example')
+        );
+    </script>
+  </body>
+</html>
